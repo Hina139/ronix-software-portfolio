@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronix Software - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responisve.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <style>
+   
+        :root {
+            --ronix-aqua: #00BFFF; /* Bright Aqua Blue */
+            --ronix-text-dark: #555555; 
+            --ronix-background: #F2F2F7; 
+            --portfolio-bg-white: #ffffff; 
+            /* NEW VARIABLES for Card Layout */
+            --card-height: 150px; /* Card height reduced to 150px */
+            --image-width: 40%; /* Image takes 40% of the card's width */
+            --text-width: 60%; /* Text takes 60% of the card's width */
+        }
+
+        .html-10-container-1 {
+          
+            width: 100%;
+            max-width: 1200px; 
+            margin: auto;
+            padding: 1rem; 
+          
+        }
+
+   .html-10-side  h5{
+left:12.5rem;
+   }
+        /* --- Portfolio Grid (Modified to 2 Columns) --- */
+        .html-9-container-5 {
+            padding: 0;
+            text-align: center;
+        }
+
+        .html-9-headline {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem !important;
+            color: #000;
+            text-align: left; 
+            padding-left: 20px;
+        }
+
+        /* KEY CHANGE: 2 COLUMNS per row, using grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 equally sized columns */
+            gap: 25px; /* Spacing between cards */
+            padding: 0 20px;
+            /* align-items: stretch; (Default, ensures same height) */
+        }
+
+        /* --- Individual Portfolio Item (The Slider Card) --- */
+        .portfolio-item {
+            display: flex; 
+            /* width: var(--card-width) is REMOVED to fit the grid column */
+            height: var(--card-height); 
+            background-color: var(--portfolio-bg-white);
+            border-radius: 8px; 
+            text-decoration: none;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.3s ease;
+            
+            /* Arrange content: Image on the right, Text area on the left */
+            flex-direction: row-reverse; 
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
+        }
+
+        .portfolio-item img {
+            width: var(--image-width); 
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+            transition: transform 0.5s ease;
+            z-index: 5; 
+        }
+
+        /* The white background area where the text will slide in */
+        .portfolio-item::before {
+            content: "";
+            display: block;
+            width: var(--text-width); 
+            height: 100%;
+            background-color: var(--portfolio-bg-white); 
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
+        /* Overlay text (The Sliding Text Panel on the Left) */
+        .portfolio-item .overlay {
+            position: absolute;
+            top: 0;
+            /* Start the overlay off-screen to the left */
+            left: calc(-1 * var(--text-width)); 
+            width: var(--text-width); 
+            height: 100%;
+            
+            background-color: #555; 
+            color: white;
+            padding: 1.5rem; /* Padding reduced for smaller height */
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; 
+            text-align: left;
+            
+            opacity: 0; 
+            transition: left 0.5s ease, opacity 0.3s ease 0.2s; 
+            
+            font-weight: 600;
+            font-size: 1.2rem; /* Font size reduced */
+            z-index: 10; 
+            cursor: pointer;
+        }
+
+        /* Show overlay on hover */
+        .portfolio-item:hover .overlay {
+            left: 0; 
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05); 
+        }
+        
+        /* --- Fixed Footer Styling (UNCHANGED) --- */
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1030;
+            font-size: 0.9rem;
+        }
+        .fixed-footer i {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        @media (max-width: 1280px) {
+              .html-10-side h5{
+                left:9rem;
+            }
+        }
+@media (max-width: 1024px) {
+      .html-10-side h5{
+                left:0.2rem;
+            }
+             .html-10-logo{
+                width:100% !important;
+                margin-left: 0.2rem;
+            }
+
+}
+
+    
+        @media (max-width: 992px) {
+            
+            .html-10-container-1 {
+                margin: 0 1rem;
+                padding: 2rem 1rem;
+                max-width: 100%;
+            }
+          .html-10-logo{
+                width:100% !important;
+                margin-left: 0.2rem;
+            }
+
+
+            .html-10-side h5{
+                left:1rem;
+            }
+            
+            .html-9-headline {
+                font-size: 2rem;
+                padding-left: 10px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* 1 column on tablet/large mobile */
+            }
+            
+            /* Responsive adjustments for the new card style */
+            .portfolio-item {
+                width: 90%; 
+                height: 140px; 
+            }
+            
+            .portfolio-item .overlay {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+
+                /* Footer: Stack horizontally (no fixed positioning needed for mobile view unless required) */
+            .fixed-footer {
+                position: relative; /* Change from fixed to relative/static */
+                height: auto;
+                flex-direction: column;
+                padding: 15px 10px;
+                text-align: center;
+                border-top: 1px solid #eee;
+            }
+            
+            .footer-left, .footer-right, .footer-center {
+                margin: 5px 0;
+            }
+        }
+          @media (max-width: 768px){
+               .html-10-side h5{
+                left:0.2rem;
+            }
+            .html-10{
+                margin-left: 5rem;
+            }
+           
+            
+          }
+      
+        
+        @media (max-width: 576px) {
+            
+            .portfolio-item {
+                width: 100%;
+                height: 100px; /* Even smaller on mobile */
+            }
+             .html-10-logo{
+                width:100% !important;
+                margin-left: 2.5rem !important;
+            }
+
+            
+            .portfolio-item img {
+                width: 50%;
+                object-fit: cover;
+            }
+
+            .portfolio-item .overlay {
+                width: 50%;
+                left: -50%; 
+                font-size: 0.8rem;
+                padding: 0.5rem;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .portfolio-item:hover .overlay {
+                left: 0; 
+            }
+            .html-10-side h5{
+                left:-2rem !important;
+            }
+        }
+            @media (max-width: 430px){
+               .html-10-side h5{
+                left:-2rem !important;
+            }  .html-10-logo{
+                width:100% !important;
+                margin-left: -1rem !important;
+            }
+        }
+              @media (max-width: 390px){
+               .html-10-side h5{
+                left:0.2rem !important;
+            }  .html-10-logo{
+                width:100% !important;
+                margin-left: -1rem !important;
+            }
+        }
+        @media (max-width: 414px){
+               .html-10-side h5{
+                left:0.5rem !important;
+            }  .html-10-logo{
+                width:100% !important;
+                margin-left: -1rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+<div class="html-10-container-1" id="container-4">
+    
+    <div class="logo-container html-10-logo" >
+        <img src="logo.png" alt="" class="logo html-10"  style="margin-right:8rem;" >
+    </div>
+    <div class="sidebar-text html-10-side">
+        <h5 style="font-size: large;"><a href="index10.html">PORTFOLIO</a> <a href="index8.html">CONTACT</a></h5>
+    </div>
+   
+    <div class="html-9-container-5" id="portfolio">
+        <section class="portfolio-section">
+            <h2 class="html-9-headline">Our Recent Work</h2>
+            <div class="portfolio-grid">
+                
+                <a href="project1.html" class="portfolio-item">
+                    <img src="img-7.jpg" alt="Project 1: Website Display">
+                    <div class="overlay">
+                        <h3>E-Commerce Site</h3>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Modern, scalable online store with secure payment integration.</p>
+                    </div>
+                </a>
+                
+                <a href="project2.html" class="portfolio-item">
+                    <img src="img-8.jpg" alt="Project 2: Business Cards">
+                    <div class="overlay">
+                         <h3 style="padding-top: 1rem;">Receipt Generator</h3>
+                         <p style="font-size: 0.9rem; margin-top: 5px;">Fast and customizable tool for generating professional receipts.</p>
+                    </div>
+                </a>
+                
+                <a href="project3.html" class="portfolio-item">
+                    <img src="img-14.jpg" alt="Project 3: Branding Mockup">
+                    <div class="overlay">
+                        <h3>API Generation</h3>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Developing robust and documented RESTful APIs for various platforms.</p>
+                    </div>
+                </a>
+
+                <a href="project4.html" class="portfolio-item">
+                    <img src="img-10.jpg" alt="Project 4: Law Firm Branding">
+                    <div class="overlay">
+                        <h3>UI/UX Designing</h3>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Creating user-centric designs for intuitive and engaging digital products.</p>
+                    </div>
+                </a>
+                
+                <a href="project5.html" class="portfolio-item">
+                    <img src="img-15.jpg" alt="Project 5: Logo Design">
+                    <div class="overlay">
+                        <h3>Custom CRM</h3>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Tailored Customer Relationship Management systems for workflow optimization.</p>
+                    </div>
+                </a>
+                
+                <a href="project6.html" class="portfolio-item">
+                    <img src="img-12.jpg" alt="Project 6: Media Group Website">
+                    <div class="overlay">
+                        <h3 style="padding-top: 1rem;">Corporate Branding</h3>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Full-suite branding solutions, from logo design to corporate identity.</p>
+                    </div>
+                </a>
+                
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer class="fixed-footer">
+    <div class="footer-left">
+        <i class="fab fa-behance"></i>
+        <i class="fa-solid fa-globe"></i>
+        <i class="fab fa-linkedin-in"></i>
+    </div>
+    <div class="footer-center">
+        © 2023 Ronix Software. All Rights Reserved. Seriously. All of them.
+    </div>
+    <div class="footer-right">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
